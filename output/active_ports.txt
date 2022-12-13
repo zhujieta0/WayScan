@@ -1,4 +1,8 @@
-volk.is:443
-volk.is:80
-volk.is:8080
-volk.is:8443
+api.zerobounce.in:443
+api.zerobounce.in:80
+api.zerobounce.in:8080
+api.zerobounce.in:8443
+zerobounce.in:443
+zerobounce.in:80
+zerobounce.in:8080
+zerobounce.in:8443
