@@ -72,7 +72,7 @@ jobs:
 
       - name: Running Nuclei for vulnerability assessment
         run: |
-          nuclei -t cves/2021/CVE-2021-44228.yaml -l output/active_urls.txt -bs 100 -c 50 -rl 300 -nc | tee output/nuclei_output.txt
+          nuclei -tags log4j -l output/active_urls.txt -bs 100 -c 50 -rl 300 -nc | tee output/nuclei_output.txt
         shell: bash
 
       - name: Sorting the output results
