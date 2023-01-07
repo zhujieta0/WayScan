@@ -58,15 +58,10 @@ jobs:
           httpx -l active_subdomains.txt -t 230 | tee active_urls.txt
         shell: bash
 
-      - name: Downloading Nuclei Templates
-        continue-on-error: true
-        run: |
-          nuclei -update-templates
-        shell: bash
-
       - name: Running Nuclei for vulnerability assessment
         continue-on-error: true
         run: |
+          nuclei -ut
           nuclei -tags log4j -l active_urls.txt -bs 100 -c 50 -rl 300 -nc | tee nuclei_output.txt
         shell: bash
 
