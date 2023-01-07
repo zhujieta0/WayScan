@@ -63,16 +63,9 @@ jobs:
           nuclei -update-templates
         shell: bash
 
-
-
       - name: Running Nuclei for vulnerability assessment
         run: |
           nuclei -tags log4j -l active_urls.txt -bs 100 -c 50 -rl 300 -nc | tee nuclei_output.txt
-        shell: bash
-
-      - name: Sorting the output results
-        run: |
-          find output -type f -exec sort {} -o {} \;
         shell: bash
 
       - name: Create local changes
