@@ -29,7 +29,7 @@ jobs:
           go install -v github.com/projectdiscovery/dnsx/cmd/dnsx@latest
           #go install -v github.com/projectdiscovery/naabu/v2/cmd/naabu@latest
           go install -v github.com/projectdiscovery/httpx/cmd/httpx@latest
-          go install -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei@latest
+          #go install -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei@latest
           #go install -v github.com/projectdiscovery/mapcidr/cmd/mapcidr@latest
           
         shell: bash
@@ -62,8 +62,8 @@ jobs:
       - name: Running Nuclei for vulnerability assessment
         continue-on-error: true
         run: |
-          nuclei -ut
-          nuclei -tags log4j -l active_urls.txt -bs 100 -c 50 -rl 300 -nc | tee nuclei_output.txt
+          #nuclei -ut
+          #nuclei -tags log4j -l active_urls.txt -bs 100 -c 50 -rl 300 -nc | tee nuclei_output.txt
         shell: bash
 
       - name: Create local changes
