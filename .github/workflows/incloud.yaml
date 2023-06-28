@@ -34,12 +34,12 @@ jobs:
           
         shell: bash
         
-      - name: Cache ProjectDiscovery tools
-        uses: actions/cache@v3
-        with:
-          cache: 'tools'
-          path: /home/runner/go
-          key: ${{ runner.os }}-go-tools
+#       - name: Cache ProjectDiscovery tools
+#         uses: actions/cache@v3
+#         with:
+#           cache: 'tools'
+#           path: /home/runner/go
+#           key: ${{ runner.os }}-go-tools
 
       - name: Running SubFinder for passive DNS enumeration
         run: |
@@ -64,7 +64,7 @@ jobs:
         run: |
           #nuclei -ut
           #nuclei -tags log4j -l active_urls.txt -bs 100 -c 50 -rl 300 -nc | tee nuclei_output.txt
-          naabu -l active_urls.txt -p1-65535 -c 100 | tee naabu.txt
+          naabu -l active_urls.txt -p21-65535 -c 100 | tee naabu.txt
         shell: bash
 
       - name: Create local changes
