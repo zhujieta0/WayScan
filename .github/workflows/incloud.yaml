@@ -64,7 +64,7 @@ jobs:
         run: |
           #nuclei -ut
           #nuclei -tags log4j -l active_urls.txt -bs 100 -c 50 -rl 300 -nc | tee nuclei_output.txt
-          naabu -l active_urls.txt -p21-65535 -c 100 | tee naabu.txt
+          naabu -l active_urls.txt -p 1-65535 -c 100 | tee naabu.txt
         shell: bash
 
       - name: Create local changes
