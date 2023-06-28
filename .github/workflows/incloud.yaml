@@ -53,18 +53,18 @@ jobs:
         shell: bash
 
 
-      - name: Running httpx for HTTP webservers probbing
-        run: |
-          httpx -l active_subdomains.txt -title -t 230
-          httpx -l active_subdomains.txt -t 230 | tee active_urls.txt
-        shell: bash
+#       - name: Running httpx for HTTP webservers probbing
+#         run: |
+#           httpx -l active_subdomains.txt -title -t 230
+#           httpx -l active_subdomains.txt -t 230 | tee active_urls.txt
+#         shell: bash
 
       - name: Running Nuclei for vulnerability assessment
         continue-on-error: true
         run: |
           #nuclei -ut
           #nuclei -tags log4j -l active_urls.txt -bs 100 -c 50 -rl 300 -nc | tee nuclei_output.txt
-          naabu -l active_urls.txt -p 1-65535 -c 100 | tee naabu.txt
+          naabu -l active_subdomains.txt -p 1-65535 -c 100 | httpx -title -t 230 | tee naabu.txt
         shell: bash
 
       - name: Create local changes
