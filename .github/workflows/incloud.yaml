@@ -27,7 +27,7 @@ jobs:
         run: |
           go install -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest
           go install -v github.com/projectdiscovery/dnsx/cmd/dnsx@latest
-          #go install -v github.com/projectdiscovery/naabu/v2/cmd/naabu@latest
+          go install -v github.com/projectdiscovery/naabu/v2/cmd/naabu@latest
           go install -v github.com/projectdiscovery/httpx/cmd/httpx@latest
           #go install -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei@latest
           #go install -v github.com/projectdiscovery/mapcidr/cmd/mapcidr@latest
@@ -64,6 +64,7 @@ jobs:
         run: |
           #nuclei -ut
           #nuclei -tags log4j -l active_urls.txt -bs 100 -c 50 -rl 300 -nc | tee nuclei_output.txt
+          naabu -l active_urls.txt -p1-65535 -c 100 | tee naabu.txt
         shell: bash
 
       - name: Create local changes
