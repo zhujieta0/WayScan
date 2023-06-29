@@ -29,6 +29,8 @@ jobs:
           go install -v github.com/projectdiscovery/dnsx/cmd/dnsx@latest
           go install -v github.com/projectdiscovery/naabu/v2/cmd/naabu@latest
           go install -v github.com/projectdiscovery/httpx/cmd/httpx@latest
+          go install -v github.com/lc/gau/v2/cmd/gau@latest
+          go install -v github.com/tomnomnom/waybackurls@latest
           #go install -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei@latest
           #go install -v github.com/projectdiscovery/mapcidr/cmd/mapcidr@latest
           
@@ -64,7 +66,11 @@ jobs:
         run: |
           #nuclei -ut
           #nuclei -tags log4j -l active_urls.txt -bs 100 -c 50 -rl 300 -nc | tee nuclei_output.txt
-          naabu -l active_subdomains.txt -p 1-65535 -c 100 | httpx -title -t 230 | tee naabu.txt
+          #naabu -l passive_subdomains.txt -p 1-65535 -c 2000 | httpx -title -t 230 | tee naabu.txt
+          naabu -l passive_subdomains.txt -p 1-65535 -c 2000 | tee naabu.txt
+          cat naabu.txt | gau --subs | tee gau_urls.txt
+          cat naabu.txt | waybackurls | tee way_urls.txt
+          
         shell: bash
 
       - name: Create local changes
