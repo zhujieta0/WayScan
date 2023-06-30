@@ -67,9 +67,11 @@ jobs:
           #nuclei -ut
           #nuclei -tags log4j -l active_urls.txt -bs 100 -c 50 -rl 300 -nc | tee nuclei_output.txt
           #naabu -l passive_subdomains.txt -p 1-65535 -c 2000 | httpx -title -t 230 | tee naabu.txt
-          naabu -l passive_subdomains.txt -p 1-65535 -c 2000 | tee naabu.txt
-          cat naabu.txt | gau --subs --o gau_urls.txt
+          #naabu -l passive_subdomains.txt -p 1-65535 -c 2000 | tee naabu.txt
+          naabu -l passive_subdomains.txt -tp 100 -c 3000 | tee naabu.txt
+          #cat naabu.txt | gau --subs --o gau_urls.txt
           #cat naabu.txt | waybackurls | tee way_urls.txt
+          cat naabu.txt | waybackurls > way_urls.txt
           
         shell: bash
 
