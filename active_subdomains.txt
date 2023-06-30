@@ -1,4 +1,4 @@
-oa.szgzw.gov.cn
 mail.szgzw.gov.cn
-cqjg.szgzw.gov.cn
+oa.szgzw.gov.cn
 sam.szgzw.gov.cn
+cqjg.szgzw.gov.cn

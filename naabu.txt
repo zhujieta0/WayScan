@@ -1,14 +1,9 @@
-https://sam.szgzw.gov.cn:7443 [[36m政务微信[0m]
-https://cqjg.szgzw.gov.cn:10016 [[36m国资产权监管系统[0m]
-https://sam.szgzw.gov.cn [[36m302 Found[0m]
-https://cqjg.szgzw.gov.cn:10026 [[36m投资管理系统[0m]
-https://cqjg.szgzw.gov.cn:10036 [[36m[0m]
-https://sam.szgzw.gov.cn:10096 [[36m[0m]
-https://sam.szgzw.gov.cn:10106 [[36m业绩薪酬对标数据管理系统[0m]
-https://sam.szgzw.gov.cn:10076 [[36m国资财务管理系统[0m]
-https://cqjg.szgzw.gov.cn:10056 [[36m改革专项填报系统[0m]
-https://sam.szgzw.gov.cn:8088 [[36m[0m]
-https://sam.szgzw.gov.cn:10046 [[36m深圳市国资集体资产平台[0m]
-https://sam.szgzw.gov.cn:6080 [[36m[0m]
-https://sam.szgzw.gov.cn:10148 [[36m国企创新数据填报系统[0m]
-https://sam.szgzw.gov.cn:10135 [[36m专项数据采集[0m]
+sam.szgzw.gov.cn:443
+sam.szgzw.gov.cn:8081
+sam.szgzw.gov.cn:8443
+mail.szgzw.gov.cn:995
+mail.szgzw.gov.cn:110
+mail.szgzw.gov.cn:143
+mail.szgzw.gov.cn:993
+mail.szgzw.gov.cn:25
+mail.szgzw.gov.cn:465

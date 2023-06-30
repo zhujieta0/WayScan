@@ -1,7 +1,7 @@
-mail.szgzw.gov.cn
-cqjg.szgzw.gov.cn
-sam.szgzw.gov.cn
 spf.mail.szgzw.gov.cn
 oa.szgzw.gov.cn
 www.szgzw.gov.cn
 szgzw.gov.cn
+mail.szgzw.gov.cn
+cqjg.szgzw.gov.cn
+sam.szgzw.gov.cn
