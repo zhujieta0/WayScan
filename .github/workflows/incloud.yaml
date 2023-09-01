@@ -13,7 +13,7 @@ jobs:
       - name: Setup golang
         uses: actions/setup-go@v2
         with:
-          go-version: 1.19
+          go-version: 1.21
           cache: 'go'
           path: /home/runner/go
           key: ${{ runner.os }}-go
@@ -31,7 +31,7 @@ jobs:
           go install -v github.com/projectdiscovery/httpx/cmd/httpx@latest
           go install -v github.com/lc/gau/v2/cmd/gau@latest
           go install -v github.com/tomnomnom/waybackurls@latest
-          #go install -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei@latest
+          go install -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei@latest
           #go install -v github.com/projectdiscovery/mapcidr/cmd/mapcidr@latest
           
         shell: bash
@@ -71,9 +71,16 @@ jobs:
           naabu -l passive_subdomains.txt -tp 100 -c 3000 | tee naabu.txt
           cat naabu.txt | gau --subs --blacklist png,jpg,gif,css --o example-urls.txt
           #cat naabu.txt | waybackurls | tee way_urls.txt
-          #cat naabu.txt | waybackurls > way_urls.txt
+          cat naabu.txt | waybackurls > way_urls.txt
           
         shell: bash
+
+      - name: Running NucleiFuzzing...
+        continue-on-error: true
+        run: |
+
+            git clone https://github.com/projectdiscovery/fuzzing-templates.git
+            nuclei -l way_urls.txt -t fuzzing-templates -rl 05 
 
       - name: Create local changes
         run: |
