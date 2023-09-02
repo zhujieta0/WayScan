@@ -61,7 +61,7 @@ jobs:
 #           httpx -l active_subdomains.txt -t 230 | tee active_urls.txt
 #         shell: bash
 
-      - name: Running Nuclei for vulnerability assessment
+      - name: Getting all urls...
         continue-on-error: true
         run: |
           #nuclei -ut
@@ -69,9 +69,9 @@ jobs:
           #naabu -l passive_subdomains.txt -p 1-65535 -c 2000 | httpx -title -t 230 | tee naabu.txt
           #naabu -l passive_subdomains.txt -p 1-65535 -c 2000 | tee naabu.txt
           naabu -l passive_subdomains.txt -tp 100 -c 3000 | tee naabu.txt
-          cat naabu.txt | gau --subs --blacklist png,jpg,gif,css --o example-urls.txt
+          cat naabu.txt | gau --subs --blacklist png,jpg,gif,css --o gl.txt
           #cat naabu.txt | waybackurls | tee way_urls.txt
-          cat naabu.txt | waybackurls > way_urls.txt
+          cat naabu.txt | waybackurls > way_urls.txt | tee -a gl.txt | sort -u gl.txt
           
         shell: bash
 
@@ -80,15 +80,15 @@ jobs:
         run: |
 
             git clone https://github.com/projectdiscovery/fuzzing-templates.git
-            nuclei -l way_urls.txt -t fuzzing-templates -rl 05 
+            nuclei -l gl.txt -t fuzzing-templates -rl 50 -o nuclei_out.txt
 
       - name: Create local changes
         run: |
           git add *.txt
       - name: Commit results to Github
         run: |
-          git config --local user.email "admin@inbug.org"
-          git config --global user.name "inbug-team"
+          git config --local user.email "admin@Wg.org"
+          git config --global user.name "Wg-team"
           git commit -m "InCloud Report" -a --allow-empty
       - name: Push changes
         uses: ad-m/github-push-action@master
