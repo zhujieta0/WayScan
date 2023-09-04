@@ -49,11 +49,11 @@ jobs:
           subfinder -dL domains.txt -config config/subfinder-config.yaml -o active_subdomains.txt
         shell: bash
 
-      - name: Running dnsx for valid DNS filtering 
-        run: |
-          dnsx -l passive_subdomains.txt -t 50 | tee -a active_subdomains.txt
-          sort -u active_subdomains.txt
-        shell: bash
+      # - name: Running dnsx for valid DNS filtering 
+      #   run: |
+      #     dnsx -l passive_subdomains.txt -t 50 | tee -a active_subdomains.txt
+      #     sort -u active_subdomains.txt
+      #   shell: bash
 
 
       - name: Running httpx for HTTP webservers probbing
