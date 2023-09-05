@@ -60,14 +60,17 @@ jobs:
         # timeout-minutes: 30
         run: |
           #nuclei -tags log4j -l active_urls.txt -bs 100 -c 50 -rl 300 -nc | tee nuclei_output.txt
-          #naabu -l passive_subdomains.txt -p 1-65535 -c 2000 | httpx -title -t 230 | tee naabu.txt
-          naabu -l active_subdomains.txt -p 1-65535 -c 2000 | tee -a active_subdomains.txt
+          #naabu -l passive_subdomains.txt -p 1-65535 -c 10000 | httpx -title -t 230 | tee naabu.txt
+          
+          naabu -l active_subdomains.txt -p 1-65535 -c 10000 -o naabu.txt
+          cat naabu.txt >> active_subdomains.txt | sort -u 
+          
 
 
       - name: Running httpx for HTTP webservers probbing
         run: |
           #httpx -l active_subdomains.txt -title -t 230
-          httpx -l active_subdomains.txt -t 430 -mc 100,101,200,201,204,301,302,304,400,403,404,500,502,503 -o passive_subdomains.txt
+          httpx -l active_subdomains.txt -t 730 -mc 100,101,200,201,204,301,302,304,400,403,404,500,502,503 -o passive_subdomains.txt
           httpx -l passive_subdomains.txt -title -t 430
         shell: bash
 
