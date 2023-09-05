@@ -75,7 +75,7 @@ jobs:
         continue-on-error: true
         # timeout-minutes: 30
         run: |
-          #nuclei -ut
+        
           #nuclei -tags log4j -l active_urls.txt -bs 100 -c 50 -rl 300 -nc | tee nuclei_output.txt
           #naabu -l passive_subdomains.txt -p 1-65535 -c 2000 | httpx -title -t 230 | tee naabu.txt
           #naabu -l passive_subdomains.txt -p 1-65535 -c 2000 | tee naabu.txt
@@ -97,7 +97,7 @@ jobs:
         run: |
 
             git clone https://github.com/projectdiscovery/fuzzing-templates.git
-            nuclei -l gl.txt -t fuzzing-templates -rl 50 -o nuclei_out.txt
+            nuclei -l g_w.txt -t fuzzing-templates -rl 50 -o nuclei_out.txt
 
       - name: Create local changes
         run: |
