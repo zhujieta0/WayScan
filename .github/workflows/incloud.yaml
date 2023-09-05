@@ -61,7 +61,7 @@ jobs:
         run: |
           #nuclei -tags log4j -l active_urls.txt -bs 100 -c 50 -rl 300 -nc | tee nuclei_output.txt
           #naabu -l passive_subdomains.txt -p 1-65535 -c 2000 | httpx -title -t 230 | tee naabu.txt
-          naabu -l passive_subdomains.txt -p 1-65535 -c 2000 | tee -a active_subdomains.txt
+          naabu -l active_subdomains.txt -p 1-65535 -c 2000 | tee -a active_subdomains.txt
 
 
       - name: Running httpx for HTTP webservers probbing
