@@ -55,15 +55,15 @@ jobs:
       #     sort -u active_subdomains.txt
       #   shell: bash
       
-      - name: Scaning all ports...
-        continue-on-error: true
-        # timeout-minutes: 30
-        run: |
-          #nuclei -tags log4j -l active_urls.txt -bs 100 -c 50 -rl 300 -nc | tee nuclei_output.txt
-          #naabu -l passive_subdomains.txt -p 1-65535 -c 10000 | httpx -title -t 230 | tee naabu.txt
+      # - name: Scaning all ports...
+      #   continue-on-error: true
+      #   # timeout-minutes: 30
+      #   run: |
+      #     #nuclei -tags log4j -l active_urls.txt -bs 100 -c 50 -rl 300 -nc | tee nuclei_output.txt
+      #     #naabu -l passive_subdomains.txt -p 1-65535 -c 10000 | httpx -title -t 230 | tee naabu.txt
           
-          naabu -l active_subdomains.txt -p 1-65535 -c 10000 -o naabu.txt
-          cat naabu.txt >> active_subdomains.txt | sort -u 
+      #     naabu -l active_subdomains.txt -p 1-65535 -c 10000 -o naabu.txt
+      #     cat naabu.txt >> active_subdomains.txt | sort -u 
           
 
 
