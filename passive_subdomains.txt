@@ -1,8 +1,6 @@
-https://e.driveuconnect.com
-https://login.driveuconnect.com
-https://m.driveuconnect.eu
-https://dev.login.driveuconnect.com
-https://test.login.driveuconnect.com
-https://connectedservices.driveuconnect.eu
-https://www.driveuconnect.eu
-https://pre-connectedservices.driveuconnect.eu
+http://testhtml5.vulnweb.com
+http://testphp.vulnweb.com
+http://www.vulnweb.com
+http://testasp.vulnweb.com
+http://rest.vulnweb.com
+http://testaspnet.vulnweb.com
