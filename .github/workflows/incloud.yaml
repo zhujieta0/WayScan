@@ -1,8 +1,7 @@
-name: incloud 
+name: cloud 
 
 on:
-    workflow_dispatch:
-
+  workflow_dispatch:
 jobs:
   build:
     runs-on: ubuntu-latest 
@@ -21,15 +20,12 @@ jobs:
       - name: Setting up ProjectDiscovery tools 
         env:
           GO111MODULE: on
-
       - name: Setup Dependencies  
         run: |
           sudo apt-get install libpcap-dev
           rm -rf *_*.txt 
 
       - name: Setting up ProjectDiscovery tools 
-        env:
-          GO111MODULE: on
         run: |
           go install -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest 
           go install -v github.com/projectdiscovery/dnsx/cmd/dnsx@latest   
@@ -83,7 +79,7 @@ jobs:
 
       - name: Getting all urls... 
         continue-on-error: true
-        timeout-minutes: 340
+        timeout-minutes: 100
         run: |
         
           #nuclei -tags log4j -l active_urls.txt -bs 100 -c 50 -rl 300 -nc | tee nuclei_output.txt 
@@ -103,7 +99,7 @@ jobs:
         shell: bash
 
       - name: Running NucleiFuzzing...
-        timeout-minutes: 340
+        timeout-minutes: 300
         continue-on-error: true
         run: |
 
