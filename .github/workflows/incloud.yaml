@@ -87,11 +87,11 @@ jobs:
           #naabu -l passive_subdomains.txt -p 1-65535 -c 2000 | tee naabu.txt 
           
           # naabu -l passive_subdomains.txt -tp 100 -c 3000 | tee naabu.txt
-          # cat naabu.txt | gau --subs --blacklist png,jpg,gif,css --o gl.txt 
+          cat passive_subdomains.txt | gau --subs --blacklist png,jpg,gif,css --o g_l.txt
           # cat naabu.txt | waybackurls > way_urls.txt | tee -a gl.txt  
 
           #cat passive_subdomains.txt | gau --subs --blacklist png,jpg,gif,css | tee g_w.txt     
-          cat active_subdomains.txt | waybackurls > w_w.txt   
+          #cat active_subdomains.txt | waybackurls > w_w.txt   
           #cat passive_subdomains.txt | waybackurls > way_urls.txt | tee -a g_w.txt    
           
           # sort -u g_w.txt 
@@ -104,7 +104,7 @@ jobs:
         run: |
 
             git clone https://github.com/projectdiscovery/fuzzing-templates.git
-            nuclei -l w_w.txt -t fuzzing-templates -rl 50 -o nuclei_out.txt
+            nuclei -l g_l.txt -t fuzzing-templates -rl 50 -o nuclei_out.txt
 
       - name: Create local changes
         continue-on-error: true
