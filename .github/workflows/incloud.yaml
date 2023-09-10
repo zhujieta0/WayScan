@@ -27,11 +27,11 @@ jobs:
         env:
           GO111MODULE: on
         run: |
-          go install -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest 
-          go install -v github.com/projectdiscovery/dnsx/cmd/dnsx@latest   
-          go install -v github.com/projectdiscovery/naabu/v2/cmd/naabu@latest 
+          go install -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest
+          go install -v github.com/projectdiscovery/dnsx/cmd/dnsx@latest
+          go install -v github.com/projectdiscovery/naabu/v2/cmd/naabu@latest
           go install -v github.com/projectdiscovery/httpx/cmd/httpx@latest
-          go install -v github.com/lc/gau/v2/cmd/gau@latest 
+          go install -v github.com/lc/gau/v2/cmd/gau@latest
           go install -v github.com/tomnomnom/waybackurls@latest
           go install -v github.com/projectdiscovery/nuclei/v2/cmd/nuclei@latest
           #go install -v github.com/projectdiscovery/mapcidr/cmd/mapcidr@latest
@@ -47,8 +47,8 @@ jobs:
 
       - name: Running SubFinder for passive DNS enumeration
         run: |
-          sudo rm -rf *_*.txt  
-          subfinder -dL domains.txt -config config/subfinder-config.yaml -o active_subdomains.txt 
+          sudo rm -rf *_*.txt
+          subfinder -dL domains.txt -config config/subfinder-config.yaml -o active_subdomains.txt
         shell: bash
 
       # - name: Running dnsx for valid DNS filtering 
@@ -73,11 +73,11 @@ jobs:
         continue-on-error: true
         run: |
           #httpx -l active_subdomains.txt -title -t 230
-          httpx -l active_subdomains.txt -t 730 -mc 100,101,200,201,204,301,302,304,400,403,404,500,502,503 -o passive_subdomains.txt 
+          httpx -l active_subdomains.txt -t 730 -mc 100,101,200,201,204,301,302,304,400,403,404,500,502,503 -o passive_subdomains.txt
           httpx -l passive_subdomains.txt -title -t 430
         shell: bash
 
-      - name: Getting all urls... 
+      - name: Getting all urls...
         continue-on-error: true
         timeout-minutes: 100
         run: |
@@ -103,7 +103,7 @@ jobs:
         continue-on-error: true
         run: |
 
-            git clone https://github.com/projectdiscovery/fuzzing-templates.git 
+            git clone https://github.com/projectdiscovery/fuzzing-templates.git
             nuclei -l w_w.txt -t fuzzing-templates -rl 50 -o nuclei_out.txt
 
       - name: Create local changes
@@ -118,5 +118,5 @@ jobs:
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }} 
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: ${{ github.ref }}
