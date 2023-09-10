@@ -79,7 +79,7 @@ jobs:
 
       - name: Getting all urls...
         continue-on-error: true
-        timeout-minutes: 100
+        timeout-minutes: 80
         run: |
         
           #nuclei -tags log4j -l active_urls.txt -bs 100 -c 50 -rl 300 -nc | tee nuclei_output.txt 
@@ -99,7 +99,7 @@ jobs:
         shell: bash
 
       - name: Running NucleiFuzzing...
-        timeout-minutes: 300
+        timeout-minutes: 280
         continue-on-error: true
         run: |
 
