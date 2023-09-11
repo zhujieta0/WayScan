@@ -93,19 +93,15 @@ jobs:
           #cat passive_subdomains.txt | gau --subs --blacklist png,jpg,gif,css | tee g_w.txt     
           #cat active_subdomains.txt | waybackurls > w_w.txt   
           #cat passive_subdomains.txt | waybackurls > way_urls.txt | tee -a g_w.txt    
-          
           # sort -u g_w.txt 
-          
         shell: bash
 
       - name: Running NucleiFuzzing...
         timeout-minutes: 280
         continue-on-error: true
         run: |
-
             git clone https://github.com/projectdiscovery/fuzzing-templates.git
             nuclei -l g_l.txt -t fuzzing-templates -rl 50 -o nuclei_out.txt
-
       - name: Create local changes
         continue-on-error: true
         run: |
