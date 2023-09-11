@@ -64,7 +64,7 @@ jobs:
         timeout-minutes: 50
         run: |
           #nuclei -tags log4j -l active_urls.txt -bs 100 -c 50 -rl 300 -nc | tee nuclei_output.txt  
-          naabu -iL active_subdomains.txt -rate 10000 -p - | tee -a passive_subdomains.txt
+          naabu -l active_subdomains.txt -rate 10000 -p - | tee -a passive_subdomains.txt
 
 
       - name: Running httpx for HTTP webservers probbing
