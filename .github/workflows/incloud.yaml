@@ -111,10 +111,11 @@ jobs:
         run: |
           git add *.txt
       - name: Commit results to Github
+        continue-on-error: true
         run: |
-          git config --local user.email "admin@Wg.org"
-          git config --global user.name "Wg-team"
-          git commit -m "InCloud Report" -a --allow-empty 
+          git config --local user.email "admin@inbug.org"
+          git config --global user.name "inbug-team"
+          git commit -m "InCloud Report" -a --allow-empty
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
