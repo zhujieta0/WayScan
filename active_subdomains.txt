@@ -1,1 +1,4 @@
-www.testphp.vulnweb.com
+www.szscredit.com
+spf.szscredit.com
+mail.szscredit.com
+szscredit.com
